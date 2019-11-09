@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bangla-font.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/solaimanlipi.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome/font-awesome.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+
+    <div class="container" style="background: #f5f6f7;">
+        <div class="card">
+            <div class="card-header">
+                <div class="container-fluid ">
+                    <div class="row">
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="col-sm-6">
+                            <label><h4> Welcome to Knit Asia voting System </h4></label>
+                        </div>
+                        <div class="col-sm-3">
+                            <h6 th:align="right"> Session: <span th:text="${sessionInfo.description}"/></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <form id="homeForm" th:action="@{/questions}" method="post">
+                <div class="row col-md-6">
+                    <div class="form-group col-md-8">
+                        <label> <span th:text="${msg}"/> </label>
+                    </div>
+                    <div class="form-group col-md-8">
+                        <h5> Enter your code to login </h5>
+                        <label for="empCode" class="col-form-label">User Code</label>
+                        <input type="text" name="empCode" class="form-control"
+                               id="empCode" placeholder="User Code"/>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row col-md-2">
+                        <button th:type="submit" th:id="submit" th:name="submit" class="btn btn-info">
+                            Login
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/4.0.0/js/bootstrap.min.js}"></script>
+
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#submit").click(function () {
+            var empCode = $('#empCode').val();
+            if (empCode == null | empCode == undefined) {
+                alert("Please enter empCode");
+                $('form[name=homeForm]').submit(function (event) {
+                    event.preventDefault();
+                    //add stuff here
+                });
+                return false;
+            }
+        });
+
+        function checkValidate() {
+            var empCode = $('#empCode').val();
+            if (empCode == null | empCode == undefined) {
+                alert("Please enter empCode");
+                $('form[name=homeForm]').submit(function (event) {
+                    event.preventDefault();
+                    //add stuff here
+                });
+                return false;
+            }
+        }
+    });
+</script>
+
+</html>

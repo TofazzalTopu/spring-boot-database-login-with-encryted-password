@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> Error </title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}"/>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <div class="container-fluid ">
+                    <div class="row">
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="col-sm-6">
+                            <label><h4> Welcome to Knit Asia voting System </h4></label>
+                        </div>
+                        <div class="col-sm-3">
+                            <!--<h6 th:align="right"> <span th:text="${user.empName}" /> </h6>-->
+                            <h6 th:align="right"> <span th:text="${sessionInfo.description}" /> </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</head>
+<body>
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h2> Vote casting failed! </h2>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <style type="text/css">
+
+        /* HIDE RADIO */
+        [type=radio] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* IMAGE STYLES */
+        [type=radio] + img {
+            cursor: pointer;
+        }
+
+        /* CHECKED STYLES */
+        [type=radio]:checked + img {
+            outline: 2px solid #f00;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome/font-awesome.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fontawesome-free-5.11.2-web/css/fontawesome.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bangla-font.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/solaimanlipi.css}"/>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <div class="container-fluid ">
+                    <div class="row">
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="col-sm-6">
+                            <label><h4> Welcome to Knit Asia voting System </h4></label>
+                        </div>
+                        <div class="col-sm-3">
+                            <h6 th:align="right"><span th:text="${user.empName}"/></h6>
+                            <h6 th:align="right"> Session: <span th:text="${sessionInfo.description}"/></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</head>
+<body class="bangla-font">
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <form th:id="question_one_form" th:action="@{/create}" method="post">
+                <input type="hidden" th:name="empId" th:id="empId" th:field="*{user.id}">
+                <input type="hidden" th:field="*{user.empCode}" th:name="empCode" th:id="empCode">
+                <input type="hidden" th:field="*{sessionInfo.id}" th:name="sessionId" th:id="sessionId">
+
+                <div class="container-fluid ">
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label><h4><span name="showMsg" id="showMsg" value=""/></h4></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label> Question: &nbsp;&nbsp;&nbsp; </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <label> <span th:text="${main_q.description}"/> </label>
+                        </div>
+                        <!--<div class="col-sm-2">
+                            <div class="btn-group">
+                                <label>
+                                    <input type="radio" name="main_q" value="1">
+                                    <img src="http://placehold.it/40x60/0bf/fff&text=A">
+                                </label>
+                                &nbsp;
+                                <label>
+                                    <input type="radio" name="main_q" value="2">
+                                    <img src="http://placehold.it/40x60/b0f/fff&text=B">
+                                </label>
+                                &nbsp;
+                                <label>
+                                    <input type="radio" name="main_q" value="3">
+                                    <img src="http://placehold.it/40x60/0bf/fff&text=C">
+                                </label>
+                                &nbsp;
+                                <label>
+                                    <input type="radio" name="main_q" value="4">
+                                    <img src="http://placehold.it/40x60/b0f/fff&text=D">
+                                </label>
+                            </div>
+                        </div>-->
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="btn-group">
+                                <label>
+                                    <input type="radio" name="main_q" value="1">
+                                    <img src="http://placehold.it/40x60/0bf/fff&text=A">
+                                </label>
+                                &nbsp;
+                                <label>
+                                    <input type="radio" name="main_q" value="2">
+                                    <img src="http://placehold.it/40x60/b0f/fff&text=B">
+                                </label>
+                                &nbsp;
+                                <label>
+                                    <input type="radio" name="main_q" value="3">
+                                    <img src="http://placehold.it/40x60/0bf/fff&text=C">
+                                </label>
+                                &nbsp;
+                                <label>
+                                    <input type="radio" name="main_q" value="4">
+                                    <img src="http://placehold.it/40x60/b0f/fff&text=D">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-fluid ">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input type="checkbox" id="showQuestions"> Click On Check Box For Questions
+                        </div>
+                    </div>
+                </div>
+                <br/>
+
+                <div id="questionsDiv" class="container-fluid ">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label> Question One: &nbsp;&nbsp;&nbsp; </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <label> <span th:text="${first_q.description}"/> </label>
+                        </div>
+                        <div class="col-sm-1">
+                            <div class="btn-group">
+                                <label>
+                                    <input type="radio" name="first_q" value="1">
+                                    <img src="http://placehold.it/40x60/0bf/fff&text=A">
+                                </label>
+                                &nbsp;
+                                <label>
+                                    <input type="radio" name="first_q" value="2">
+                                    <img src="http://placehold.it/40x60/b0f/fff&text=B">
+                                </label>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label> Question Two: &nbsp;&nbsp;&nbsp; </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <label> <span th:text="${second_q.description}"/></label>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div class="btn-group">
+                                <label>
+                                    <input type="radio" name="second_q" value="1">
+                                    <img src="http://placehold.it/40x60/0bf/fff&text=A">
+                                </label>
+                                &nbsp;
+                                <label>
+                                    <input type="radio" name="second_q" value="2">
+                                    <img src="http://placehold.it/40x60/b0f/fff&text=B">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label> Question Three: &nbsp;&nbsp;&nbsp; </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <label> <span th:text="${third_q.description}"/> </label>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="btn-group">
+                                <label>
+                                    <input type="radio" name="third_q" value="1">
+                                    <img src="http://placehold.it/40x60/0bf/fff&text=A">
+                                </label>
+                                &nbsp;
+                                <label>
+                                    <input type="radio" name="third_q" value="2">
+                                    <img src="http://placehold.it/40x60/b0f/fff&text=B">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label> Question Four: &nbsp;&nbsp;&nbsp; </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <label> <span th:text="${fourth_q.description}"/> </label>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="btn-group">
+                                <label>
+                                    <input type="radio" name="fourth_q" value="1">
+                                    <img src="http://placehold.it/40x60/0bf/fff&text=A">
+                                </label>
+                                &nbsp;
+                                <label>
+                                    <input type="radio" name="fourth_q" value="2">
+                                    <img src="http://placehold.it/40x60/b0f/fff&text=B">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label> Question Five: &nbsp;&nbsp;&nbsp; </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <label> <span th:text="${fifth_q.description}"/></label>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="btn-group">
+                                <label>
+                                    <input type="radio" name="fifth_q" value="1">
+                                    <img src="http://placehold.it/40x60/0bf/fff&text=A">
+                                </label>
+                                &nbsp;
+                                <label>
+                                    <input type="radio" name="fifth_q" value="2">
+                                    <img src="http://placehold.it/40x60/b0f/fff&text=B">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label> Question Six: &nbsp;&nbsp;&nbsp; </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <label> <span th:text="${sixth_q.description}"/> </label>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="btn-group">
+                                <label>
+                                    <input type="radio" name="sixth_q" value="1">
+                                    <img src="http://placehold.it/40x60/0bf/fff&text=A">
+                                </label>
+                                &nbsp;
+                                <label>
+                                    <input type="radio" name="sixth_q" value="2">
+                                    <img src="http://placehold.it/40x60/b0f/fff&text=B">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label> Question Seven: &nbsp;&nbsp;&nbsp; </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <label> <span th:text="${seventh_q.description}"/> </label>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="btn-group">
+                                <label>
+                                    <input type="radio" name="seventh_q" value="1">
+                                    <img src="http://placehold.it/40x60/0bf/fff&text=A">
+                                </label>
+                                &nbsp;
+                                <label>
+                                    <input type="radio" name="seventh_q" value="2">
+                                    <img src="http://placehold.it/40x60/b0f/fff&text=B">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label> Question Eight: &nbsp;&nbsp;&nbsp; </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <label> <span th:text="${eight_q.description}"/> </label>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="btn-group">
+                                <label>
+                                    <input type="radio" name="eight_q" value="1">
+                                    <img src="http://placehold.it/40x60/0bf/fff&text=A">
+                                </label>
+                                &nbsp;
+                                <label>
+                                    <input type="radio" name="eight_q" value="2">
+                                    <img src="http://placehold.it/40x60/b0f/fff&text=B">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label> Question Nine: &nbsp;&nbsp;&nbsp; </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <label> <span th:text="${ninth_q.description}"/> </label>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="btn-group">
+                                <label>
+                                    <input type="radio" name="ninth_q" value="1">
+                                    <img src="http://placehold.it/40x60/0bf/fff&text=A">
+                                </label>
+                                &nbsp;
+                                <label>
+                                    <input type="radio" name="ninth_q" value="2">
+                                    <img src="http://placehold.it/40x60/b0f/fff&text=B">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" id="tenth">
+                        <div class="col-sm-2">
+                            <label>
+                                <!--<i class="fal fa-arrow-alt-right"></i>-->
+                                Question Ten: &nbsp;&nbsp;&nbsp;
+                            </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <label> <span id="tenth_q_id" th:text="${tenth_q.description}"/> </label>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="btn-group">
+                                <label>
+                                    <input type="radio" name="tenth_q" value="1">
+                                    <img src="http://placehold.it/40x60/0bf/fff&text=A">
+                                </label>
+                                &nbsp;
+                                <label>
+                                    <input type="radio" name="tenth_q" value="2">
+                                    <img src="http://placehold.it/40x60/b0f/fff&text=B">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="flex-sm-row">
+                                    <div class="md-form">
+                                        <i class="fas fa-pencil-alt prefix"></i>
+                                        <label for="notes">Icon Prefix</label>
+                                        <textarea id="notes" name="notes" class="md-textarea form-control" rows="3"
+                                                  placeholder="Write something here..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid ">
+                    <div class="form-group">
+                        <div class="row col-md-2">
+                            <input type="submit" value="submit" name="submit" id="submit"
+                                   class="btn btn-info btn-block"/>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/4.0.0/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:href="@{/js/fontawesome-free-5.11.2-web/js/fontawesome.js}"/>
+
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        showHide();
+
+        $("#submit").click(function () {
+            var main_q = $("input[name='main_q']:checked").val();
+            var first_q = $("input[name='first_q']:checked").val();
+            var second_q = $("input[name='second_q']:checked").val();
+            var third_q = $("input[name='third_q']:checked").val();
+            var fourth_q = $("input[name='fourth_q']:checked").val();
+            var fifth_q = $("input[name='fifth_q']:checked").val();
+            var sixth_q = $("input[name='sixth_q']:checked").val();
+            var seventh_q = $("input[name='seventh_q']:checked").val();
+            var eight_q = $("input[name='eight_q']:checked").val();
+            var ninth_q = $("input[name='ninth_q']:checked").val();
+            var tenth_q = $("input[name='tenth_q']:checked").val();
+
+            if (main_q == undefined || main_q == null) {
+                $('#showMsg').text("Please select first question!");
+                $('#showMsg').focus();
+                $('form[name=question_one_form]').submit(function (event) {
+                    event.preventDefault();
+                    //add stuff here
+                });
+                return false;
+            }
+            if (first_q == undefined || first_q == null) {
+                first_q = 0;
+            }
+            if (second_q == undefined || second_q == null) {
+                second_q = 0;
+            }
+            if (third_q == undefined || third_q == null) {
+                third_q = 0;
+            }
+            if (fourth_q == undefined || fourth_q == null) {
+                fourth_q = 0;
+            }
+            if (fifth_q == undefined || fifth_q == null) {
+                fifth_q = 0;
+            }
+            if (sixth_q == undefined || sixth_q == null) {
+                sixth_q = 0;
+            }
+            if (seventh_q == undefined || seventh_q == null) {
+                seventh_q = 0;
+            }
+            if (eight_q == undefined || eight_q == null) {
+                eight_q = 0;
+            }
+
+            if (ninth_q == undefined || ninth_q == null) {
+                ninth_q = 0;
+            }
+
+            if (tenth_q == undefined || tenth_q == null) {
+                tenth_q = 0;
+            }
+
+            var empCode = $('#empCode').val();
+            var empId = $('#empId').val();
+            var sessionId = $('#sessionId').val();
+            var notes = $('#notes').val();
+            var isError = false;
+
+            /*  $.ajax({
+                  url: '/voteApp/create',
+                  dataType: 'application/json',
+                  data: {
+                      empCode: empCode, empId: empId,
+                      sessionId: sessionId, main_q: main_q, first_q: first_q, second_q: second_q,
+                      third_q: third_q, fourth_q: fourth_q, fifth_q: fifth_q,
+                      sixth_q: sixth_q, seventh_q: seventh_q, eight_q: eight_q,
+                      ninth_q: ninth_q, tenth_q: tenth_q, notes: notes
+                  },
+                  type: 'post',
+                  success: function (response) {
+                      alert("Vote have done successfully!");
+                  },
+                  error: function (request, textStatus, errorThrown) {
+                      // alert("Vote casting not successfull!");
+                  },
+                  complete: function (request, textStatus) {
+                      alert("Vote have done successfully!");
+                      if (!isError) {
+                          window.location.href = '/voteApp/home'
+                      }
+                  }
+              });
+         */
+        });
+
+    });
+
+    function showHide() {
+        $('#questionsDiv').hide();
+
+        $("#showQuestions").change(function () {
+            if (this.checked) {
+                $('#questionsDiv').show();
+            } else {
+                $('#questionsDiv').hide();
+            }
+        });
+    }
+
+</script>
+</html>
