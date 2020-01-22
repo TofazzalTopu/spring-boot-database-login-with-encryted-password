@@ -1,4 +1,4 @@
-package com.info.voteApp.util;
+package com.info.voteApp.config;
 
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
