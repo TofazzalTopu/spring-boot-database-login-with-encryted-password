@@ -462,7 +462,7 @@
             var isError = false;
 
             /*  $.ajax({
-                  url: '/voteApp/create',
+                  url: '/app/create',
                   dataType: 'application/json',
                   data: {
                       empCode: empCode, empId: empId,
@@ -481,7 +481,7 @@
                   complete: function (request, textStatus) {
                       alert("Vote have done successfully!");
                       if (!isError) {
-                          window.location.href = '/voteApp/home'
+                          window.location.href = '/app/home'
                       }
                   }
               });
